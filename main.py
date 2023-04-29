@@ -28,11 +28,23 @@ class MyApp:
 
         button = Button(root, text="Button text", command=self.press_button)
         button.pack()
+        
+        self.list_item_strings = ["Hey", "Hi", "Hello", "Bonjour", "Yo"]
+        list_items = StringVar(value=self.list_item_strings)
+        listbox = Listbox(root, listvariable=list_items)
+        listbox.pack()
+        listbox["height"] = 3
+        listbox.bind("<<ListboxSelect>>", lambda s: self.select_items(listbox.curselection()))
     
     def press_button(self):
         print("Button Press")
         text = self.entry_text.get()
         self.label_text.set(text)
+
+    def select_items(self, index):
+        selected_item = self.list_item_strings[index[0]]
+        print(selected_item)
+    
 
 root =Tk()
 
