@@ -11,13 +11,28 @@ class MyApp:
         self.initUI(root)
     
     def initUI(self,root):
-        label = Label(root, text="Some label text")
+        self.label_text = StringVar()
+        label = Label(root, text="Some label text", textvariable=self.label_text)
         label.pack()
 
         #label["text"] = "New Label text"
         #label["font"] = ("Courier", 40)
 
         label.configure(text="New label",font=("Courier", 40))
+
+        self.entry_text = StringVar()
+        entry = Entry(root, textvariable=self.entry_text)
+        entry.pack()
+
+        #label["textvariable"] = entry_text
+
+        button = Button(root, text="Button text", command=self.press_button)
+        button.pack()
+    
+    def press_button(self):
+        print("Button Press")
+        text = self.entry_text.get()
+        self.label_text.set(text)
 
 root =Tk()
 
