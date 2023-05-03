@@ -11,10 +11,12 @@ class MyApp:
         self.initUI(root)
     
     def initUI(self,root):
+        frame = Frame(root, width=200, height=100, relief="raised")
+        frame.place(x=0, y=0)
         self.label_text = StringVar()
         label = Label(root, text="Some label text", textvariable=self.label_text)
         #label.pack(side=tk.LEFT, padx=10, pady=5)
-        label.grid(column=1,row=1)
+        #label.grid(column=1,row=1)
 
         #label["text"] = "New Label text"
         #label["font"] = ("Courier", 40)
@@ -25,19 +27,21 @@ class MyApp:
         entry = Entry(root, textvariable=self.entry_text)
         #entry.pack(side=tk.LEFT)
         #entry.place(x=100, y=50)
-        entry.grid(column=2, row=1)
+        #entry.grid(column=2, row=1)
 
         #label["textvariable"] = entry_text
 
         button = Button(root, text="Button text", command=self.press_button)
         #button.pack(side=tk.LEFT)
-        button.grid(column=1, row=2, sticky=(S,E,W))
+        #button.place(x=0,y=0)
+        #button.configure(width=10, height=20, font=("Courier", 40))
+        #button.grid(column=1, row=2, sticky=(S,E,W))
         
         self.list_item_strings = ["Hey", "Hi", "Hello", "Bonjour", "Yo"]
         list_items = StringVar(value=self.list_item_strings)
         listbox = Listbox(root, listvariable=list_items)
         #listbox.pack(side=tk.LEFT, padx=10, pady=5)
-        listbox.grid(column=2, row=2)
+        #listbox.grid(column=2, row=2)
         listbox["height"] = 3
         listbox.bind("<<ListboxSelect>>", lambda s: self.select_items(listbox.curselection()))
     
