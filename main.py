@@ -45,6 +45,27 @@ class ToDoListApp:
         selected_description_label = Label(frame, textvariable=self.selected_description)
         selected_description_label.grid(column=1, row=3, sticky=(E, W))
 
+        #New Item
+        new_item_label = Label(frame, text="New Item")
+        new_item_label.grid(column=2, row=1, sticky=(S,W))
+
+        name_label = Label(frame, text="New Name")
+        name_label.grid(column=2, row=2, sticky=(S,W))
+
+        self.name = StringVar()
+        name_entry = Entry(frame, textvariable=self.name)
+        name_entry.grid(column=2, row=3, sticky=(N, E, W))
+        
+        description_label = Label(frame, text="New Name")
+        description_label.grid(column=2, row=4, sticky=(S,W))
+
+        self.description = StringVar()
+        description_entry = Entry(frame, textvariable=self.description)
+        description_entry.grid(column=2, row=5, sticky=(N, E, W))
+
+        save_button = Button(frame, text="Save", command=self.save_item)
+        save_button.grid(column=2, row=6, sticky=(E))
+        
 
         '''self.label_text = StringVar()
         label = Label(frame, text="Some label text", textvariable=self.label_text)
@@ -71,7 +92,7 @@ class ToDoListApp:
         #button.grid(column=1, row=2, sticky=(S,E,W))'''
         
         
-    def press_button(self):
+    def save_item(self):
         print("Button Press")
         text = self.entry_text.get()
         self.label_text.set(text)
